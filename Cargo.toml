@@ -1,0 +1,23 @@
+[package]
+name = "staged_file"
+version = "0.1.0"
+license = "MIT OR Apache-2.0"
+authors = ["Bryant Luk <code@bryantluk.com>"]
+edition = "2018"
+description = "Creates a temporary file which can then be committed to a final path."
+repository = "https://github.com/bluk/staged_file"
+readme = "README.md"
+include = [
+  "src/**/*.rs",
+  "Cargo.toml",
+  "README.md",
+  "LICENSE-APACHE",
+  "LICENSE-MIT",
+]
+
+[dependencies]
+tempfile = "3"
+cfg-if = "1"
+
+[target.'cfg(unix)'.dependencies]
+nix = "0.20"
