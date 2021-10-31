@@ -12,7 +12,7 @@ Only UNIX is currently supported.
 
 ```toml
 [dependencies]
-staged_file = "0.1"
+staged_file = "0.2"
 ```
 
 ## Example
@@ -47,11 +47,11 @@ discarded.
 
 ## Other Libraries
 
-* [tempfile](tempfile)
+* [tempfile][tempfile]
 
 The library is used as a dependency in this crate to create temporary directories.
 
-* [atomicwrites](atomicwrites)
+* [atomicwrites][atomicwrites]
 
 A cross platform atomic file writes library.
 
