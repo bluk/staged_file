@@ -6,14 +6,7 @@ use std::{
 
 impl From<nix::Error> for crate::Error {
     fn from(error: nix::Error) -> Self {
-        match error {
-            nix::Error::Sys(errno) => crate::Error::Io(io::Error::from(errno)),
-            nix::Error::InvalidPath
-            | nix::Error::InvalidUtf8
-            | nix::Error::UnsupportedOperation => {
-                crate::Error::Io(io::Error::new(ErrorKind::Other, ""))
-            }
-        }
+        crate::Error::Io(io::Error::new(ErrorKind::Other, error.desc()))
     }
 }
 
