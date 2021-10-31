@@ -43,6 +43,24 @@ use std::{
     result,
 };
 
+/// A type erased boxed error.
+///
+/// Used for other implementation errors.
+#[derive(Debug)]
+pub struct BoxError(Box<dyn std::error::Error + Send + Sync + 'static>);
+
+impl Display for BoxError {
+    fn fmt(&self, f: &mut Formatter<'_>) -> result::Result<(), fmt::Error> {
+        self.0.fmt(f)
+    }
+}
+
+impl std::error::Error for BoxError {
+    fn source(&self) -> Option<&(dyn std::error::Error + 'static)> {
+        self.0.source()
+    }
+}
+
 /// Possible errors when creating and committing the staged file.
 #[derive(Debug)]
 pub enum Error {
@@ -52,6 +70,8 @@ pub enum Error {
     InvalidParentFinalPath,
     /// An I/O error.
     Io(io::Error),
+    /// All other errors.
+    Other(BoxError),
 }
 
 impl Display for Error {
@@ -60,6 +80,18 @@ impl Display for Error {
             Error::InvalidFinalPath => write!(f, "invalid final path"),
             Error::InvalidParentFinalPath => write!(f, "invalid parent final path"),
             Error::Io(e) => e.fmt(f),
+            Error::Other(e) => e.fmt(f),
+        }
+    }
+}
+
+impl std::error::Error for Error {
+    fn source(&self) -> Option<&(dyn std::error::Error + 'static)> {
+        match self {
+            Error::InvalidFinalPath => None,
+            Error::InvalidParentFinalPath => None,
+            Error::Io(e) => Some(e),
+            Error::Other(e) => Some(e),
         }
     }
 }

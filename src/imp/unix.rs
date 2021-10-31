@@ -1,12 +1,9 @@
-use crate::{Error, FinalPath, TempFilePath};
-use std::{
-    fs,
-    io::{self, ErrorKind},
-};
+use crate::{BoxError, Error, FinalPath, TempFilePath};
+use std::fs;
 
 impl From<nix::Error> for crate::Error {
     fn from(error: nix::Error) -> Self {
-        crate::Error::Io(io::Error::new(ErrorKind::Other, error.desc()))
+        crate::Error::Other(BoxError(Box::new(error)))
     }
 }
 
