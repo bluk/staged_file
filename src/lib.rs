@@ -208,7 +208,7 @@ impl StagedFile {
         }
         let temp_dir = tempfile::Builder::new()
             .prefix(temp_dir_prefix.unwrap_or(".staged"))
-            .tempdir_in(final_path_parent(&final_path)?)?;
+            .tempdir_in(final_path_parent(final_path)?)?;
         let temp_file_path = temp_dir
             .path()
             .join(final_path.file_name().ok_or(Error::InvalidFinalPath)?);
