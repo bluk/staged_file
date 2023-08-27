@@ -21,4 +21,4 @@ tempfile = "3"
 cfg-if = "1"
 
 [target.'cfg(unix)'.dependencies]
-nix = "0.23"
+nix = "0.26"
