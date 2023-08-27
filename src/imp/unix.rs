@@ -8,6 +8,8 @@ impl From<nix::Error> for crate::Error {
 }
 
 pub(crate) fn commit(from: &TempFilePath, to: &FinalPath) -> Result<(), Error> {
+    use std::os::unix::io::AsRawFd;
+
     let from = from.0.as_path();
     let to = to.0.as_path();
     fs::rename(from, to)?;
@@ -17,7 +19,6 @@ pub(crate) fn commit(from: &TempFilePath, to: &FinalPath) -> Result<(), Error> {
 
     let to_parent = fs::File::open(to_parent)?;
 
-    use std::os::unix::io::AsRawFd;
     nix::unistd::fsync(to_parent.as_raw_fd())?;
 
     Ok(())

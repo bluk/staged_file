@@ -88,8 +88,7 @@ impl Display for Error {
 impl std::error::Error for Error {
     fn source(&self) -> Option<&(dyn std::error::Error + 'static)> {
         match self {
-            Error::InvalidFinalPath => None,
-            Error::InvalidParentFinalPath => None,
+            Error::InvalidFinalPath | Error::InvalidParentFinalPath => None,
             Error::Io(e) => Some(e),
             Error::Other(e) => Some(e),
         }
