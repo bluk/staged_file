@@ -21,4 +21,4 @@ tempfile = "3"
 cfg-if = "1"
 
 [target.'cfg(unix)'.dependencies]
-nix = "0.26"
+nix = { version = "0.27", features = ["fs"] }
