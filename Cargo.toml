@@ -14,7 +14,7 @@ name = "staged_file"
 readme = "README.md"
 repository = "https://github.com/bluk/staged_file"
 rust-version = "1.65.0"
-version = "0.3.0"
+version = "0.4.0"
 
 [dependencies]
 tempfile = "3"

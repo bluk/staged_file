@@ -12,7 +12,7 @@ Only UNIX is currently supported.
 
 ```toml
 [dependencies]
-staged_file = "0.3"
+staged_file = "0.4"
 ```
 
 ## Example
