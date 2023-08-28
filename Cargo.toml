@@ -1,13 +1,7 @@
 [package]
-name = "staged_file"
-version = "0.3.0"
-license = "MIT OR Apache-2.0"
 authors = ["Bryant Luk <code@bryantluk.com>"]
-edition = "2021"
-rust-version = "1.63.0"
 description = "Creates a temporary file which can then be committed to a final path."
-repository = "https://github.com/bluk/staged_file"
-readme = "README.md"
+edition = "2021"
 include = [
   "src/**/*.rs",
   "Cargo.toml",
@@ -15,6 +9,12 @@ include = [
   "LICENSE-APACHE",
   "LICENSE-MIT",
 ]
+license = "MIT OR Apache-2.0"
+name = "staged_file"
+readme = "README.md"
+repository = "https://github.com/bluk/staged_file"
+rust-version = "1.65.0"
+version = "0.3.0"
 
 [dependencies]
 tempfile = "3"

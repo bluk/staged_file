@@ -17,7 +17,7 @@ jobs:
           - ubuntu-latest
         rust:
           - stable
-          - 1.63.0
+          - 1.65.0
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout sources
@@ -40,7 +40,7 @@ jobs:
           - ubuntu-latest
         rust:
           - stable
-          - 1.63.0
+          - 1.65.0
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout sources
