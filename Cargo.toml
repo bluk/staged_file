@@ -13,7 +13,7 @@ license = "MIT OR Apache-2.0"
 name = "staged_file"
 readme = "README.md"
 repository = "https://github.com/bluk/staged_file"
-rust-version = "1.65.0"
+rust-version = "1.69.0"
 version = "0.4.0"
 
 [dependencies]
